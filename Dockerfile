@@ -6,9 +6,9 @@ COPY . /src/
 ENV GO111MODULE=on
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-    go build -a -tags netgo -mod vendor -o ./dapr-go-subscriber .
+    go build -a -tags netgo -mod vendor -o ./service .
 
 FROM gcr.io/distroless/static:nonroot
-COPY --from=builder /src/dapr-go-subscriber .
+COPY --from=builder /src/service .
 
-ENTRYPOINT ["./dapr-go-subscriber"]
+ENTRYPOINT ["./service"]
