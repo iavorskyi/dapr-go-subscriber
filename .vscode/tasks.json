@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"appId": "go-subscriber",
+			"appPort": 8000,
+			"label": "daprd-debug",
+			"type": "daprd"
+		},
+		{
+			"appId": "go-subscriber",
+			"label": "daprd-down",
+			"type": "daprd-down"
+		}
+	]
+}

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-go-subscriber
+  labels:
+    app: dapr-go-subscriber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-go-subscriber
+  template:
+    metadata:
+      labels:
+        app: dapr-go-subscriber
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-go-subscriber"
+        dapr.io/app-port: "8000"
+    spec:
+      containers:
+        - name: dapr-go-subscriber
+          image: sunua/dapr-go-subscriber:latest
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
